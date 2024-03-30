@@ -4,7 +4,7 @@ from flask_cors import CORS, cross_origin
 import os
 import sys
 
-# from services.users_short import *
+from services.users_short import *
 from services.home_activities import *
 from services.notifications_activities import *
 from services.user_activities import *
@@ -152,8 +152,8 @@ def data_messages(message_group_uuid):
     app.logger.debug(claims)
     cognito_user_id = claims['sub']
     model = Messages.run(
-        cognito_user_id=cognito_user_id,
-        message_group_uuid=message_group_uuid
+        message_group_uuid=message_group_uuid,
+        cognito_user_id=cognito_user_id
       )
     if model['errors'] is not None:
       return model['errors'], 422
@@ -276,10 +276,10 @@ def data_activities_reply(activity_uuid):
     return model['data'], 200
   return
 
-# @app.route("/api/users/@<string:handle>/short", methods=['GET'])
-# def data_users_short(handle):
-#   data = UsersShort.run(handle)
-#   return data, 200
+@app.route("/api/users/@<string:handle>/short", methods=['GET'])
+def data_users_short(handle):
+  data = UsersShort.run(handle)
+  return data, 200
 
 if __name__ == "__main__":
   app.run(debug=True)
