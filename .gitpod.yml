@@ -48,3 +48,13 @@ ports:
   - name: xray-daemon
     port: 2000
     visibility: public
+
+# aws ecs create-service --cli-input-json file://service-backend-flask.json --enable-execute-command
+
+# aws ecs execute-command  \
+# --region $AWS_DEFAULT_REGION \
+# --cluster cruddur \
+# --task arn:aws:ecs:ap-south-1:975049922162:task/cruddur/72a4f5cbc9fc4ba9a9e55c301e341de0 \
+# --container backend-flask \
+# --command "/bin/bash" \
+# --interactive

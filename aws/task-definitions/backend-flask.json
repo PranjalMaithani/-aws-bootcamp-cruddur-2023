@@ -2,25 +2,6 @@
     "family": "backend-flask",
     "containerDefinitions": [
         {
-            "name": "xray",
-            "image": "public.ecr.aws/xray/aws-xray-daemon",
-            "cpu": 0,
-            "portMappings": [
-                {
-                    "name": "xray",
-                    "containerPort": 2000,
-                    "hostPort": 2000,
-                    "protocol": "udp"
-                }
-            ],
-            "essential": true,
-            "environment": [],
-            "mountPoints": [],
-            "volumesFrom": [],
-            "user": "1337",
-            "systemControls": []
-        },
-        {
             "name": "backend-flask",
             "image": "975049922162.dkr.ecr.ap-south-1.amazonaws.com/backend-flask",
             "cpu": 0,
@@ -99,7 +80,7 @@
             "healthCheck": {
                 "command": [
                     "CMD-SHELL",
-                    "python /backend-flask/bin/health-check"
+                    "python /bin/flask/health-check"
                 ],
                 "interval": 30,
                 "timeout": 5,
@@ -118,3 +99,4 @@
     "cpu": "256",
     "memory": "512"
 }
+
