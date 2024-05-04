@@ -31,3 +31,20 @@ The `/journal` directory contains
 - [ ] [Week 11](journal/week11.md)
 - [ ] [Week 12](journal/week12.md)
 - [ ] [Week 13](journal/week13.md)
+
+FE task definition containers removed:
+```
+      {
+        "name": "xray",
+        "image": "public.ecr.aws/xray/aws-xray-daemon" ,
+        "essential": true,
+        "user": "1337",
+        "portMappings": [
+          {
+            "name": "xray",
+            "containerPort": 2000,
+            "protocol": "udp"
+          }
+        ]
+      },
+```
