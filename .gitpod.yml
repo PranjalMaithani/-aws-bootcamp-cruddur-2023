@@ -50,11 +50,15 @@ ports:
     visibility: public
 
 # aws ecs create-service --cli-input-json file://service-backend-flask.json --enable-execute-command
+# aws ecs create-service --cli-input-json file://service-frontend-react-js.json --enable-execute-command
 
 # aws ecs execute-command  \
 # --region $AWS_DEFAULT_REGION \
 # --cluster cruddur \
-# --task arn:aws:ecs:ap-south-1:975049922162:task/cruddur/41ed8a5a599649e3a7ae3e95a604a695 \
-# --container backend-flask \
-# --command "/bin/bash" \
+# --task arn:aws:ecs:ap-south-1:975049922162:task/cruddur/arn:aws:ecs:ap-south-1:975049922162:task/cruddur/1389fc89a018448397b2b86697f47296 \
+# --container frontend-react-js \
+# --command "/bin/sh" \
 # --interactive
+
+# aws ecs update-service --desired-count 0 --cluster "cruddur" --service "backend-flask"
+# aws ecs update-service --desired-count 0 --cluster "cruddur" --service "frontend-react-js"
